@@ -1,0 +1,13 @@
+M-Mangoes Technical Test Solution
+
+Knight : 952
+Bishop : 2341
+Pawn : 0
+Rook : 49326
+Queen : 694658
+King : 86961
+
+Questions? 
+1. How do you know that what you developed is correct? I tested it for a 2 digit number for each chess piece and based on my calculations, I was correct.
+
+2. How can you make it more efficient? Auto generating the moves of each chess piece for different grid layouts.
