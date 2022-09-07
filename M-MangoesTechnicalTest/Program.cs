@@ -6,13 +6,16 @@ Console.Read();
 
 public static class Valid7DigitPhoneNumberFromKeypad
 {
-    public static int ValidDepthCombinations(string chessPieceName, int startIndex, int depth = 1)
+    public static int ValidDepthCombinations(string chessPieceName, int startDigit, int depth = 1)
     {
-        if (depth == 1 && (startIndex == 1 || startIndex == 0))
+        chessPieceName = chessPieceName.ToLower().Trim();
+        if (startDigit > 9)
+            throw new Exception("Invalid Start Digit");
+        if (depth == 1 && (startDigit == 1 || startDigit == 0))
             throw new Exception("You cannot start from 1 or 0");
         if (depth == 7)
             return 1;
-        List<int> a = PossibleMoves(chessPieceName, startIndex);
+        List<int> a = ChessPiecePossibleMoves(chessPieceName, startDigit);
         int totalPossibleMoves = 0;
         if (a.Count == 0)
             return 0;
@@ -22,13 +25,9 @@ public static class Valid7DigitPhoneNumberFromKeypad
         }
         return totalPossibleMoves;
     }
-    public static List<int> PossibleMoves(string chessPeice, int startIndex)
-    {
-        return ChessPieceMoves(chessPeice, startIndex);
-    }
-    public static List<int> ChessPieceMoves(string chessPeice, int index)
-    {
 
+    public static List<int> ChessPiecePossibleMoves(string chessPeice, int index)
+    {
         Dictionary<int, List<int>> bishopValidMoves = new()
         {
             [1] = new List<int> { 5, 9 },
@@ -118,6 +117,7 @@ public static class Valid7DigitPhoneNumberFromKeypad
             ["bishop"] = bishopValidMoves,
             ["knight"] = knightValidMoves,
             ["queen"] = queenValidMoves,
+            ["king"] = kingValidMoves,
             ["rook"] = rookValidMoves,
             ["pawn"] = pawnValidMoves
         };
