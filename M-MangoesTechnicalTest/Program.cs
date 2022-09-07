@@ -1,14 +1,30 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
+using System.Collections;
+using System.Numerics;
+
 Console.WriteLine("Hello, World!");
-Console.WriteLine(Valid7DigitPhoneNumberFromKeypad.ValidDepthCombinations("bishop", 2));
+List<string> chessNames = new List<string>() {"knight", "bishop", "pawn", "rook", "queen", "king" };
+foreach(string chessName in chessNames)
+    Console.WriteLine(Valid7DigitPhoneNumberFromKeypad.SumValidDepthCombinations(chessName));
+//Valid7DigitPhoneNumberFromKeypad.SumValidDepthCombinations("bishop");
 Console.Read();
 
 public static class Valid7DigitPhoneNumberFromKeypad
 {
-    public static int ValidDepthCombinations(string chessPieceName, int startDigit, int depth = 1)
+    public static BigInteger SumValidDepthCombinations(string chessPieceName)
     {
         chessPieceName = chessPieceName.ToLower().Trim();
+        BigInteger result = BigInteger.Zero;    
+        IEnumerable validDigit = Enumerable.Range(2,8);
+        foreach(int num in validDigit)
+        {
+            result += ValidDepthCombinations(chessPieceName, num);
+        }
+        return result;
+    } 
+    public static BigInteger ValidDepthCombinations(string chessPieceName, int startDigit, int depth = 1)
+    {
         if (startDigit > 9)
             throw new Exception("Invalid Start Digit");
         if (depth == 1 && (startDigit == 1 || startDigit == 0))
@@ -16,7 +32,7 @@ public static class Valid7DigitPhoneNumberFromKeypad
         if (depth == 7)
             return 1;
         List<int> a = ChessPiecePossibleMoves(chessPieceName, startDigit);
-        int totalPossibleMoves = 0;
+        BigInteger totalPossibleMoves = 0;
         if (a.Count == 0)
             return 0;
         foreach (int move in a)
