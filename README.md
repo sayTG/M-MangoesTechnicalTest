@@ -6,3 +6,10 @@ This project uses .NET 6 and it is a console Application.
 
 
 This solution checks for the count of valid 7-digit phone numbers that can be traced out of the above keypad for every chess piece.
+
+* Knight : 952 
+* Bishop : 2341
+* Pawn : 0
+* Rook : 49326
+* Queen : 694658
+* King : 86961
