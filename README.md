@@ -1,6 +1,6 @@
 # M-MangoesTechnicalTest
 
-This project uses .NET 6 and it is a console Application.
+This project is a .NET 6 console Application.
 
 ![image](https://user-images.githubusercontent.com/55540640/188959193-eff8e5af-26fc-496b-87c5-516abeeb18ba.png)
 
